@@ -5,7 +5,7 @@
 
  let a = 67
  console.log(a)
- a = "harry"
+ a = "zeeshan"
  console.log(a)
 
 
@@ -15,6 +15,19 @@
  console.log(a)
 
 
- // difference between var, let, const
+//  difference between var, let, const, before ES6 var was used, but not used now because it makes global variable
+//  let used to make block-spaced variable
+//  const cannot be changed
 
- 
+var aa = 45
+var bb = "zeeshan"
+var cc = null
+var dd = undefined
+
+{
+    let inside = "zeeshan, inside"
+    console.log(inside)
+}
+
+// console.log(inside) throws error, not inside the block
+
