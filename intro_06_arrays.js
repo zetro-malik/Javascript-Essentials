@@ -1,3 +1,4 @@
+//#region array operation
 const fruits = ["banana","apple","peach"]
 let dynmc = [1,'hello',true,{'obj':true}] // can store multiple types
 console.log(dynmc)
@@ -48,3 +49,38 @@ console.log(num, deletedVals)
 //doesnt modify org array
 console.log(num.slice(3))
 console.log(num.slice(3,5))
+//#endregion
+
+
+
+//#region array loops
+console.log("\n\n----------array loops---------\n\n")
+let arr = [3,5,66,12,42]
+
+for (let i = 0; i < arr.length; i++) {
+   console.log(arr[i])
+}
+
+console.log('\n\n')
+//foreach takes a fucntion
+arr.forEach((element)=>{
+    console.log(element*element)
+})
+
+// array.from, used to make array from other objects
+console.log(Array.from("zeeshan"))
+
+//for...of
+console.log("for ---- of iterate values")
+for (let i of num){
+    console.log(i)
+}
+
+console.log("for ---- in iterate index")
+for (let i in num){
+    console.log(i)
+}
+
+
+
+//#endregion
