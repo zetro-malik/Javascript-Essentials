@@ -22,3 +22,6 @@ for (let a in obj){
 for (let a of obj){
     console.log(a)
 }
+
+
+//while and do while 
