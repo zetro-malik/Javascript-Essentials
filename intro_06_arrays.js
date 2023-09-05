@@ -1,5 +1,5 @@
 //#region array operation
-const fruits = ["banana","apple","peach"]
+let fruits = ["banana","apple","peach"]
 let dynmc = [1,'hello',true,{'obj':true}] // can store multiple types
 console.log(dynmc)
 console.log(dynmc.length)
@@ -84,3 +84,77 @@ for (let i in num){
 
 
 //#endregion
+//doesnt modify orginal arrays
+
+//#region map, filter and reduce
+
+// map method
+//foreach only iterate, map return the array back
+//map, it return a new array, by performing operation on specific element
+let temp = num.map((val,index,arr)=>{
+    console.log(val,index)
+    return val + 1
+})
+console.log(temp)
+
+
+// filter method
+// if it returns true, it will keep the value in the array, else removed
+temp = num.filter((e)=>{
+    return e < 50
+})
+console.log(temp)
+
+
+
+
+//reduce method
+// return a value
+
+
+//example 1
+const shoppingCart = [
+    { item: "Shoes", price: 50 },
+    { item: "Shirt", price: 20 },
+    { item: "Jeans", price: 40 },
+    { item: "Socks", price: 5 },
+  ];
+  
+  // Calculate the total cost of items in the shopping cart
+  const totalCost = shoppingCart.reduce((accumulator, currentItem) => {
+    return accumulator + currentItem.price;
+  }, 0);
+  
+  console.log(`Total cost of items: $${totalCost}`);
+  
+//example 2
+  const numbers = [5, 3, 9, 12, 1];
+
+// Finding the maximum value
+const max = numbers.reduce((accumulator, currentValue) => {
+  return Math.max(accumulator, currentValue);
+}, -Infinity);
+
+// Finding the minimum value
+const min = numbers.reduce((accumulator, currentValue) => {
+  return Math.min(accumulator, currentValue);
+}, Infinity);
+
+console.log(`Maximum: ${max}`); // Output: 12
+console.log(`Minimum: ${min}`); // Output: 1
+
+
+//example 3
+
+ fruits = ["apple", "banana", "apple", "orange", "apple"];
+
+const fruitCount = fruits.reduce((accumulator, currentValue) => {
+  accumulator[currentValue] = (accumulator[currentValue] || 0) + 1;
+  return accumulator;
+}, {});
+
+console.log(fruitCount); // Output: { apple: 3, banana: 1, orange: 1 }
+
+
+//#endregion
+
