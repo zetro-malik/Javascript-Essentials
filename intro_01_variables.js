@@ -58,7 +58,7 @@ console.log(fff,bbb)
 console.log(typeof eee)  //finding type of datatype
 
 
-// non-primitive datatype Objects in JS are like dictionary in python, and map in flutter
+// non-primitive data Objects in JS are like dictionary in python, and map in flutter
 const item = {
     "Harry":true,
     "Shub":false,
@@ -68,5 +68,31 @@ const item = {
 
 console.log(item['lovish'])
 
+
+//#endregion
+
+
+//#region Practices
+
+//question # 1
+let str = "zeeshan"
+console.log(str + 10) 
+
+//question # 2
+console.log(typeof str)
+
+//question # 3
+const obj = {
+    section : "zeeshan",
+    age: 21,
+}
+//obj = 123 cannot be re-assigned
+obj["section"] = "zetro" // obj reference is const, not inside parameters
+console.log(obj.section)
+
+
+//question # 4
+obj['gender'] = "male" //also can add a new key
+console.log(obj)
 
 //#endregion
