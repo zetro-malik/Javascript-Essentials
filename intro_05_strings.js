@@ -16,4 +16,11 @@ console.log("zeeshan\'s laptop")
 
 
 //string methods
+console.log(name.toUpperCase())
+console.log(name.toLowerCase())
+console.log(name.slice(2,5)) // start is included but end is not
+console.log(name.slice(5)) // taking start and going to end
+console.log(name.replace('zee','tee'))
+console.log("    zeeehan  ".trim()) //removes wide-spaces
+
 
