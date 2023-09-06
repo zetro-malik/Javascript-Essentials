@@ -43,3 +43,43 @@ p3.then((data)=>{
     console.log(data)
 })
 console.log("starting promise")
+
+
+
+
+
+
+// Make a GET request to the API using fetch 
+ fetch(apiUrl) // fetch returns a promise, so then(response),catch(error) can be used
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    // Parse the response as JSON
+    return response.json(); // this returns a new promise... or use await
+  })
+  .then(data => {
+    // Use the data from the API
+    console.log(data);
+  })
+  .catch(error => {
+    // Handle any errors that occurred during the fetch
+    console.error('Fetch error:', error);
+  });
+
+
+
+// using async
+
+const func = async ()=>{
+ try{
+    console.log("this is ascyn")
+    let res = await fetch(apiUrl);
+    res = await res.json()
+    console.log(res)
+ }catch{
+    
+ }
+}
+
+func()
