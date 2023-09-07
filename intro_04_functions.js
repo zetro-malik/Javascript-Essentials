@@ -53,3 +53,18 @@ var ans = (function(){
 
 //console.log(privateVal) throws error because "privateVal" is private
 console.log(ans.getter())
+
+
+// call apply bind, when want to change THIS value 
+
+//call is just like self object in python
+function func(age,number){
+    console.log(this)
+}
+var obj = {name:"zeeshan"}
+
+func.call(obj,21,123) // give other arguments one by one.
+
+func.apply(obj,[21,123]) // give other arguments in 1 array.
+
+var newfunc =func.bind(obj); //bind the obj with this and returns a function to be used later.
