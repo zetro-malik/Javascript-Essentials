@@ -34,9 +34,12 @@
 
 - **Throttling:** Throttling is the control of the rate or frequency of the execution of a piece of code to manage performance or prevent excessive resource consumption.
 
+- **Higher Order Function:** Functions that either accept other functions as arguments or return functions themselves, such as `forEach`.
 
-- **Higher Order Function:** Function taking another function in the arguments or a function that returns a function for e.g foreach
+- **First Class Function:** Functions are treated like regular variables and can be stored in variables.
 
-- **First Class Function:** Function are treated like normal variable and can be stored inside a variable.
+- **IIFE (Immediately Invoked Function Expression):** An IIFE in JavaScript is a self-contained function that executes as soon as it's defined, allowing code encapsulation and private variable scope.
 
-- **iife (immediately invoked function expression)** An IIFE in JavaScript is like a self-contained function that runs as soon as it's defined, providing a way to encapsulate code and prevent variable pollution in the global scope make variables private.
+- **Prototype:** Every JavaScript object comes with a `prototype` property that contains useful methods like `hasOwnProperty(key)`.
+
+- **Pure and Impure Functions:** Pure functions consistently produce the same output for the same inputs, ensuring predictability and avoiding changes to global variables. In contrast, impure functions may produce different results for the same inputs, introducing unpredictability.
