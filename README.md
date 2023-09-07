@@ -16,6 +16,10 @@
 
 - **Spread Operator (`...`):** The spread operator allows you to spread elements of an iterable (e.g., an array) into another, making it useful for copying, merging, or manipulating data.
 
+- **Rest Operator:** The rest operator (`...`) allows you to collect multiple elements into a single array. It's often used in function parameters to handle an arbitrary number of arguments or to collect remaining elements into an array.
+
+- **Destructuring:** Destructuring allows you to extract values from arrays or properties from objects and assign them to variables. It provides a convenient way to access and work with the individual elements or properties.
+
 - **Truthy and Falsy Values:** In JavaScript, values are considered falsy if they are `0`, `false`, `undefined`, `null`, or `NaN`. All other values are considered truthy.
 
 - **`for...in` Loop:** The `for...in` loop is used to iterate over the properties of an object.
