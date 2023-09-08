@@ -43,5 +43,6 @@
 - **Prototype:** Every JavaScript object comes with a `prototype` property that contains useful methods like `hasOwnProperty(key)`.
 
 - **Pure and Impure Functions:** Pure functions consistently produce the same output for the same inputs, ensuring predictability and avoiding changes to global variables. In contrast, impure functions may produce different results for the same inputs, introducing unpredictability.
-
 - **Callback functions:** A callback is a function you pass as an argument to another function to be executed later, typically after an asynchronous operation or event. It enables you to handle the result or response of that operation.
+
+- **Call, Apply, and Bind:** These are methods used to manipulate the context (the value of `this`) when calling functions in JavaScript, allowing for more precise control over function execution.
