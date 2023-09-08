@@ -1,3 +1,6 @@
+
+// To use this, remove "type":"module" from package.json file
+
 const object = require('./intro_10_exports_2');  // object will contain all exports
 const { add, subtract } = require('./intro_10_exports_2');
 

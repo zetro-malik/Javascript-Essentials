@@ -1,0 +1,20 @@
+{
+  "name": "intro",
+  "version": "1.0.0",
+  "description": "- **Hoisting:** Variables and functions are hoisted to the top of their containing scope during compilation.",
+  "main": "intro_01_variables.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zetro-malik/Javascript-Essentials.git"
+  },
+  "author": "",
+  "type":"module",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zetro-malik/Javascript-Essentials/issues"
+  },
+  "homepage": "https://github.com/zetro-malik/Javascript-Essentials#readme"
+}
