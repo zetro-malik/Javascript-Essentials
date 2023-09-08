@@ -32,7 +32,7 @@ var restFunc = (a,b,c)=>{
 restFunc(1,2,3,4,5,6,7,8,9) // a=1, b=2, c= will hold all remaining values
 
 
-// destructuring and element
+// destructuring an array
 console.log("-------Destructuring-------")
 a = [1,2,3]
 var [val1,val2] = a
