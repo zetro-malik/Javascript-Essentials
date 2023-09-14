@@ -14,3 +14,7 @@ app.get('/',(req,res)=>{
     // automatically sets the headers
    res.send('server has started')
 })
+
+app.listen(PORT,()=>{
+    console.log(`server started at PORT = ${PORT}`)
+})
