@@ -9,6 +9,10 @@ const PORT = 5550
 
 app.use(express.json());
 
+//make routes by filename in the folder
+app.use(express.static(path.join(__dirname,"public")))
+
+
 
 app.get('/',(req,res)=>{
     // automatically sets the headers
