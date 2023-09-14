@@ -6,18 +6,16 @@ const PORT = process.env.PORT || 5000
 const server = http.createServer((req,res)=>{
     console.log(req)
     res.setHeader('Content-Type','text/html')
-    res.statusCode = 200;
     if(req.url == "/"){
     res.statusCode = 200;
 
-        const page = fs.readFileSync('./index.html')
+        const page = fs.readFileSync('intro_12_module_examples\\index.html')
         res.end(page)
 
     }
     else if (req.url=="/home")
     {
-    res.statusCode = 200;
-
+        res.statusCode = 200;
         res.end('<h1>this is home</h1>')
 
     }
