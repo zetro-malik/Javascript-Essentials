@@ -1,0 +1,12 @@
+ <div class="container" style="display: flex; flex-direction: column; gap: 2rem;">
+
+ {{#each blogs}}
+ <div class="card" style="background-color: blueviolet; ">
+  <div class="card-body">
+       <a style="text-decoration: none; color: whitesmoke;" href="/blogpost/{{this.slug}}"><h2>{{this.title}}</h2></a>
+  </div>
+</div>
+  {{/each}}
+ </div>
+
+ 

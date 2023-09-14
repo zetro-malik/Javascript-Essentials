@@ -1,0 +1,22 @@
+    <div class="container mt-4">
+        <h1>Blog Users</h1>
+        <div class="row">
+            {{#each Users}}
+            <div class="col-md-4 mb-4">
+                <div class="card" style="border: none;">
+
+                    <div class="card-body" style="background-color: blueviolet; color: white; border-radius: 15px;"> 
+                        <h5 class="card-title">{{firstName}} {{lastName}}</h5>
+                        <p class="card-text">
+                         <strong>Age:</strong> {{age}}<br>
+                        <strong>Email:</strong> {{email}}<br>
+                        <strong>Phone:</strong> {{phone}}<br>
+                        <strong>Gender:</strong> {{gender}}<br>
+                        <strong>Address:</strong> {{address.address}}, {{address.city}}, {{address.state}} {{address.postalCode}}<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
