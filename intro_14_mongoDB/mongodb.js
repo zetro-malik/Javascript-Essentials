@@ -3,14 +3,14 @@ const uri = "mongodb://0.0.0.0:27017";
 
 const client = new MongoClient(uri);
 
-async function add(){
+
+//create database and collection
+async function createCollection(){
 try{
-  await client.connect();
-  const db = client.db("nodejs"); // Replace with your database name
-    const collection = db.collection("lecture"); // Replace with your collection name
-  await collection.insertOne({
-    "hello":"world"
-  })
+   await client.connect();
+   const db = client.db("nodejs"); 
+   await db.createCollection("customers"); // Use async/await here
+   console.log("Collection created!");
 }catch(err){
   console.error(err)
 
@@ -19,4 +19,4 @@ try{
 }
 }
 
-add()
+createCollection()
