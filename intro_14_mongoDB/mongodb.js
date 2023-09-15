@@ -136,16 +136,23 @@ async function filterDocument() {
   }).toArray();
   console.log("Name equals 'John' OR Age greater than or equal to 30:", result);
 
-
-  //Sorting: Sort documents based on a field in ascending or descending order.
-  result = await customers.find().sort({ name: 1 }).toArray(); // Ascending order
-  console.log("Sorted by age (ascending):", result);
-
-  // Descending order
-  result = await customers.find().sort({ name: -1 }).toArray();
-  console.log("Sorted by age (descending):", result);
-
 }
+
+
+async function sortDocument() {
+  const db = client.db("nodejs");
+  const customers = db.collection('customers');
+  const products = db.collection('products');
+
+  //Sort the result  alphabetically by name:
+  let result = await customers.find({}).sort({ name: 1 }).toArray()
+  console.log('display names in acending order', result)
+
+  //Sort the result reverse alphabetically by name:
+  result = await customers.find({}).sort({ name: -1 }).toArray()
+  console.log('display names in decending order', result)
+}
+
 
 //baseClientConnect(createCollection)
 
@@ -153,5 +160,8 @@ async function filterDocument() {
 
 //baseClientConnect(searchDocument)
 
+//baseClientConnect(filterDocument)
 
-baseClientConnect(filterDocument)
+//baseClientConnect(sortDocument)
+
+
