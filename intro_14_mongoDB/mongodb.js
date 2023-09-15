@@ -73,8 +73,35 @@ async function addDocument() {
   console.log("products added successfully",res)
 }
 
+async function searchDocument(){
+ const db = client.db("nodejs")
+ const customers = db.collection("customers")
+ const products = db.collection("products")
 
-baseClientConnect(createCollection)
+ // finds first founded document "{}" in here we provided queries
+ let result = await customers.findOne({})
+ console.log("results of findOne  = ",result)
 
-baseClientConnect(addDocument);
+ //returns all filtered=>{} records, need to convert it into array otherwise it returns a cursor
+ result = await customers.find({}).toArray()
+ console.log("results of find  = ",result)
+
+ // filter the search
+ // The second parameter of the find() method is the projection object that describes which fields to include in the result.
+ // You are not allowed to specify both 0 and 1 values in the same object (except if one of the fields is the _id field). If you specify a field with the value 0, all other fields get the value 1, and vice versa:
+ result = await customers.find({},{projection:{_id:0,name:1,address:1}}).toArray()
+ console.log("results of projections  = ",result)
+
+ //get only address field
+ result = await customers.find({},{projection:{_id:0,address:1}}).toArray()
+ console.log("results of projections of only address fields  = ",result)
+
+
+}
+
+//baseClientConnect(createCollection)
+
+//baseClientConnect(addDocument);
+
+baseClientConnect(searchDocument)
 
