@@ -168,6 +168,13 @@ async function deleteDocument(){
 
 }
 
+async function dropDocument(){
+  const db = client.db("nodejs");
+  await db.dropCollection('customers')
+  console.log('customers dropped successfuly');
+}
+
+
 
 //baseClientConnect(createCollection)
 
@@ -179,5 +186,6 @@ async function deleteDocument(){
 
 //baseClientConnect(sortDocument)
 
+//baseClientConnect(deleteDocument)
 
-baseClientConnect(deleteDocument)
+baseClientConnect(dropDocument)
