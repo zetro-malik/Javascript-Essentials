@@ -153,6 +153,21 @@ async function sortDocument() {
   console.log('display names in decending order', result)
 }
 
+async function deleteDocument(){
+  const db = client.db("nodejs");
+  const customers = db.collection('customers');
+  const products = db.collection('products');
+
+  //Delete the document with the address "Mountain 21":
+  let result = await customers.deleteOne({address:"Mountain 21"});
+  console.log("deleted one document ",result);
+
+  //Delete all documents were the address starts with the letter "O":
+  result = await customers.deleteMany({address:/^O/});
+  console.log("deleted all document startig with O",result);
+
+}
+
 
 //baseClientConnect(createCollection)
 
@@ -165,3 +180,4 @@ async function sortDocument() {
 //baseClientConnect(sortDocument)
 
 
+baseClientConnect(deleteDocument)
