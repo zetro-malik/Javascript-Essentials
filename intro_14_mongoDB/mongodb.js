@@ -85,9 +85,9 @@ async function addDocument() {
     { "_id": 18, "name": "Sophie", "age": 29, "gender": "female" },
     { "_id": 19, "name": "James", "age": 33, "gender": "male" },
     { "_id": 20, "name": "Charlotte", "age": 24, "gender": "female" }
-]
-);
-console.log("teachers added successfully", res)
+  ]
+  );
+  console.log("teachers added successfully", res)
 
 
   //in res, getting back the documentID 
@@ -236,8 +236,8 @@ async function aggregateDocument() {
   const teachers = db.collection('teachers');
   //aggregate first argument is pipeline(list of operations) and 2nd is options
   //$match, $group, $sort are operators of a pipeline
-  let result = await teachers.aggregate([{$match:{gender:"male"}}]).toArray(); 
-  console.log("using aggrate to filter male teachers",result);
+  let result = await teachers.aggregate([{ $match: { gender: "male" } }]).toArray();
+  console.log("using aggrate to filter male teachers", result);
 
   //group teacher by age, also shows name
   //$group takes , _id:(on which grouping be performed), fields to include in that group=> syntax names:{$push:"$name"} pushing all match "$name" in names  
@@ -255,7 +255,7 @@ async function aggregateDocument() {
       }
     }
   ]).toArray();
-  
+
   console.log("Using aggregate to group by age teachers", result);
 
 
@@ -264,53 +264,53 @@ async function aggregateDocument() {
 
   result = await teachers.aggregate([
     {
-      $match:{gender:"male"}
+      $match: { gender: "male" }
     },
     {
       $group: {
         _id: "$age",
         number: {
-          $sum: 1 
+          $sum: 1
         }
       }
     }
   ]).toArray();
-  
+
   console.log("count of males teacher group by age", result);
 
   //give a count per age of male student and sort them by count in desc manner
   // $toDouble operator makes a field double and perfrom inc,dec and sum
   result = await teachers.aggregate([
     {
-      $match:{gender:"male"}
+      $match: { gender: "male" }
     },
     {
       $group: {
         _id: "$age",
         number: {
-          $sum: 1 
+          $sum: 1
         }
       }
     },
     {
-      $sort:{number:-1}
+      $sort: { number: -1 }
     },
   ]).limit(3).toArray();
-  
+
   console.log("count of males teacher group by age count in desc manner", result);
- 
+
 
   //unwind works on arrays, makes seperated document of each array object
 
 
 }
 
-async function addStudentData(){
+async function addStudentData() {
   const db = client.db("nodejs");
   const universities = db.collection('universities');
   const departments = db.collection('departments');
   const courses = db.collection('courses');
-  const Students  = db.collection('students');
+  const Students = db.collection('students');
 
   await universities.insertMany([
     {
@@ -380,23 +380,23 @@ async function addStudentData(){
     {
       "_id": 10001,
       "name": "John",
-      "age":22,
+      "age": 22,
       "courses": [1001, 1003],
-      "score":[55,22]
+      "score": [55, 22]
     },
     {
       "_id": 10002,
       "name": "Alice",
-      "age":23,
+      "age": 23,
       "courses": [1001, 1002],
-      "score":[47,72]
+      "score": [47, 72]
     },
     {
       "_id": 10003,
       "name": "Bob",
-      "age":22,
+      "age": 22,
       "courses": [1003],
-      "score":[35]
+      "score": [35]
     }
   ]
   );
@@ -405,7 +405,87 @@ async function addStudentData(){
 }
 
 
+async function lookupDocment() {
+  const db = client.db("nodejs");
+  const students = db.collection('students')
 
+
+  // getting all student below 23 age  with coursedetails without course foreignkey
+  let results = await students.aggregate([
+    {
+      $match:{age:{$lt:23}}
+    },
+    {
+      $lookup: {
+        from: "courses",
+        localField: "courses",
+        foreignField: "_id",
+        as: 'courseDetals'
+      }
+    },
+    {
+      $unwind: "$courseDetals"
+    },
+    {
+      $project: {
+        courses: 0
+      }
+    }
+  ]).toArray();
+
+ //console.log("student with their courses ", results)
+
+  // getting student name, courseName, departmentName and universityName
+  const result = await students.aggregate([
+    {
+      $lookup: {
+        from: "courses",
+        localField: "courses",
+        foreignField: "_id",
+        as: "courseDetails"
+      }
+    },
+    {
+      $unwind: "$courseDetails"
+    },
+    {
+      $lookup: {
+        from: "departments",
+        localField: "courseDetails.departmentId",
+        foreignField: "_id",
+        as: "departmentDetails"
+      }
+    },
+    {
+      $unwind: "$departmentDetails"
+    },
+    {
+      $lookup: {
+        from: "universities",
+        localField: "departmentDetails.universityId",
+        foreignField: "_id",
+        as: "universityDetails"
+      }
+    },
+    {
+      $unwind: "$universityDetails"
+    },
+    {
+      $project: {
+        _id: 1,
+        name: 1,
+        age: 1,
+        courses: "$courseDetails.courseName",
+        department: "$departmentDetails.name",
+        university: "$universityDetails.name"
+      }
+    }
+  ]).toArray();
+  
+  
+  console.log("getting student name, courseName, departmentName",result);
+}
+  
 //baseClientConnect(createCollection)
 
 //baseClientConnect(addDocument);
@@ -425,3 +505,5 @@ async function addStudentData(){
 //baseClientConnect(aggregateDocument)
 
 //baseClientConnect(addStudentData)   // new data for $lookup
+
+baseClientConnect(lookupDocment)
