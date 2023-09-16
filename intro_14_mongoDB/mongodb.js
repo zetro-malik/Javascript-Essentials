@@ -174,6 +174,31 @@ async function dropDocument(){
   console.log('customers dropped successfuly');
 }
 
+async function updateDocument(){
+  const db = client.db("nodejs");
+  const customers = db.collection('customers');
+  const products = db.collection('products');
+
+  //first parameter is for filtering, second to set new values
+   let result =await customers.updateOne({ address: "Valley 345" },{ $set: {name: "Mickey", address: "Canyon 123" } })
+   console.log("updating one document =",result)
+
+   result = await customers.updateMany({address : /^S/},{$set:{name:"Minnie"}})
+   console.log('updating many documents',result)
+
+   result = await products.updateOne({ _id: 154 },{ $set: { price: 19.99 }});
+   console.log("Updating product price by ID and decrementing quantity:", result);
+ 
+   // Update prices for products within a certain price range and increment stock
+   result = await products.updateMany({ price: { $gte: 50, $lte: 100 } },{ $inc: { price: 10 }});
+   console.log("Increasing prices and stock for products in the 50-100 range:", result);
+  
+   //rename column name
+    result = await products.updateMany({},{$rename:{name:"pname"}});
+    console.log("renaming attribute name = ",result);
+  }
+
+
 
 
 //baseClientConnect(createCollection)
@@ -188,4 +213,6 @@ async function dropDocument(){
 
 //baseClientConnect(deleteDocument)
 
-baseClientConnect(dropDocument)
+//baseClientConnect(dropDocument)
+
+baseClientConnect(updateDocument)
