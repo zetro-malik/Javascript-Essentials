@@ -433,8 +433,8 @@ async function lookupDocment() {
     }
   ]).toArray();
 
- //console.log("student with their courses ", results)
-
+  console.log("student with their courses ", results)
+  
   // getting student name, courseName, departmentName and universityName
   const result = await students.aggregate([
     {
