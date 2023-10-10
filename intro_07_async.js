@@ -70,7 +70,6 @@ console.log("starting promise")
 
 
 // using async
-
 const func = async ()=>{
  try{
     console.log("this is ascyn")
