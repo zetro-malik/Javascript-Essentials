@@ -1,6 +1,5 @@
 // utility functions
 class User{
-
     static id = 1;
 
     constructor(name,age){
