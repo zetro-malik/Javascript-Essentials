@@ -45,7 +45,7 @@ console.log(obj1,obj2)
 // make private variable in JS
 
 var ans = (function(){
-  var privateVal = 12;
+  let privateVal = 12;
   return {
     getter : ()=> privateVal
   }

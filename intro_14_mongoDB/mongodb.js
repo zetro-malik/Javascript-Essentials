@@ -486,24 +486,28 @@ async function lookupDocment() {
   console.log("getting student name, courseName, departmentName",result);
 }
   
-//baseClientConnect(createCollection)
+func =async()=>{
+  // baseClientConnect(createCollection)
 
-//baseClientConnect(addDocument);
+await baseClientConnect(addDocument);
 
-//baseClientConnect(searchDocument)
+await baseClientConnect(searchDocument)
 
-//baseClientConnect(filterDocument)
+await baseClientConnect(filterDocument)
 
-//baseClientConnect(sortDocument)
+await baseClientConnect(sortDocument)
 
-//baseClientConnect(deleteDocument)
+// baseClientConnect(deleteDocument)
 
-//baseClientConnect(dropDocument)
+// baseClientConnect(dropDocument)
 
-//baseClientConnect(updateDocument)
+await  baseClientConnect(updateDocument)
 
-//baseClientConnect(aggregateDocument)
+await baseClientConnect(aggregateDocument)
 
-//baseClientConnect(addStudentData)   // new data for $lookup
+await  baseClientConnect(addStudentData)   // new data for $lookup
 
-baseClientConnect(lookupDocment)
+await baseClientConnect(lookupDocment)
+}
+
+func()

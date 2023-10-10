@@ -22,4 +22,4 @@ var zeeshan = {
 }
 zeeshan.__proto__ = human  //adding human object into zeeshan object prototype
 
-console.log(zeeshan.canFly)
+console.log(zeeshan.__proto__)

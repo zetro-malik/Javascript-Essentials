@@ -19,7 +19,7 @@ for (let a in obj){
 //for of loop
 
 //need to be iterable to work
-for (let a of obj){
+for (let a of [obj]){
     console.log(a)
 }
 

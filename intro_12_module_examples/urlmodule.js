@@ -3,7 +3,7 @@ const url = require('url');
 
 console.log("==========Parsing a URL============")
 
-let urlString = 'https://www.example.com:8080/path/to/resource?query=example';
+let urlString = 'https://www.example.com:8080/path/to/resource?query=example&id=1';
 
 let parsedUrl = url.parse(urlString, true);
 
